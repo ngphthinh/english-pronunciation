@@ -1,0 +1,592 @@
+    :root {
+      --bg: #f6f4fb;
+      --card: #ffffff;
+      --ink: #1f1b3a;
+      --mute: #6a6585;
+      --accent: #5b45d6;
+      --accent-ink: #ffffff;
+      --accent2: #ece8ff;
+      --warm: #f59e0b;
+      --line: #e1dcf2;
+      --ok: #17803d;
+      --okbg: #ddf4e4;
+      --bad: #b42318;
+      --badbg: #fde4e1;
+      --shadow: 0 1px 2px rgba(31, 27, 58, .06), 0 6px 18px rgba(31, 27, 58, .06);
+      --r: 14px
+    }
+
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #12101f;
+        --card: #1c1932;
+        --ink: #eceaf9;
+        --mute: #a19cc0;
+        --accent: #a597ff;
+        --accent-ink: #14112a;
+        --accent2: #2a2552;
+        --warm: #fbbf24;
+        --line: #2f2a54;
+        --ok: #7fdc9b;
+        --okbg: #17331f;
+        --bad: #ff9d94;
+        --badbg: #3f1f1c;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25)
+      }
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      padding-top: env(safe-area-inset-top, 0px);
+      -webkit-text-size-adjust: 100%
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 18px 16px 130px
+    }
+
+    /* ---------- Header ---------- */
+    .hero {
+      background: linear-gradient(135deg, var(--accent), #7c5cf0 60%, #b06af0);
+      color: #fff;
+      border-radius: 20px;
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px
+    }
+
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) .hero {
+        background: linear-gradient(135deg, #3b2f8f, #5a3fb8 60%, #7a3fa8)
+      }
+    }
+
+    .hero h1 {
+      font-size: 22px;
+      line-height: 1.25;
+      margin: 0 0 4px
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 14px;
+      opacity: .92
+    }
+
+    /* ---------- Settings ---------- */
+    details.settings {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      margin-bottom: 14px;
+      font-size: 14px
+    }
+
+    details.settings summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    details.settings summary::-webkit-details-marker {
+      display: none
+    }
+
+    details.settings summary::after {
+      content: "▾";
+      color: var(--mute);
+      transition: transform .2s
+    }
+
+    details.settings[open] summary::after {
+      transform: rotate(180deg)
+    }
+
+    .set-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 14px 14px
+    }
+
+    .set-grid label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--mute);
+      font-size: 13px
+    }
+
+    .set-grid label:first-child {
+      grid-column: 1 / -1
+    }
+
+    select {
+      font: inherit;
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      min-height: 44px;
+      width: 100%
+    }
+
+    /* ---------- Tabs ---------- */
+    .tabwrap {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      margin: 0 -16px 12px;
+      padding: 8px 16px;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px)
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none
+    }
+
+    .tab {
+      flex: none;
+      white-space: nowrap;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 16px;
+      min-height: 40px;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s
+    }
+
+    .tab[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent)
+    }
+
+    /* ---------- Summary row ---------- */
+    .summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--mute)
+    }
+
+    .summary b {
+      color: var(--ink)
+    }
+
+    .switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    .switch input {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 42px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--line);
+      position: relative;
+      cursor: pointer;
+      margin: 0;
+      transition: background .2s
+    }
+
+    .switch input::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+      transition: transform .2s
+    }
+
+    .switch input:checked {
+      background: var(--accent)
+    }
+
+    .switch input:checked::after {
+      transform: translateX(18px)
+    }
+
+    /* ---------- Status pill ---------- */
+    #status {
+      position: sticky;
+      top: 58px;
+      z-index: 4;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent2);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      word-break: break-word
+    }
+
+    #status.show {
+      display: flex
+    }
+
+    #status .dot {
+      flex: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent)
+    }
+
+    #status.live .dot {
+      background: #e5484d;
+      animation: pulse 1.1s ease-in-out infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(229, 72, 77, .55)
+      }
+
+      50% {
+        box-shadow: 0 0 0 8px rgba(229, 72, 77, 0)
+      }
+    }
+
+    /* ---------- Cards ---------- */
+    .q {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 120px;
+      scroll-margin-bottom: 130px;
+      transition: border-color .2s, box-shadow .2s
+    }
+
+    .q.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent2), var(--shadow)
+    }
+
+    .qhead {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start
+    }
+
+    .num {
+      flex: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent2);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      display: grid;
+      place-items: center;
+      margin-top: 1px
+    }
+
+    .q h3 {
+      flex: 1;
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.4;
+      font-weight: 650
+    }
+
+    .badge {
+      flex: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--accent2);
+      color: var(--accent)
+    }
+
+    .badge.good {
+      background: var(--okbg);
+      color: var(--ok)
+    }
+
+    .badge.low {
+      background: var(--badbg);
+      color: var(--bad)
+    }
+
+    .badge:empty {
+      display: none
+    }
+
+    .a {
+      margin: 12px 0 14px 42px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--warm);
+      background: var(--bg);
+      border-radius: 0 10px 10px 0;
+      font-size: 16px;
+      transition: filter .2s
+    }
+
+    .q.hide .a {
+      filter: blur(7px);
+      user-select: none
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-left: 42px
+    }
+
+    button {
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--ink);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 13px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background .15s, transform .05s
+    }
+
+    button:hover {
+      background: var(--accent2)
+    }
+
+    button:active {
+      transform: scale(.97)
+    }
+
+    button.primary {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+      font-weight: 650
+    }
+
+    button.primary:hover {
+      filter: brightness(1.08);
+      background: var(--accent)
+    }
+
+    button:focus-visible,
+    select:focus-visible,
+    summary:focus-visible,
+    .switch input:focus-visible {
+      outline: 3px solid var(--warm);
+      outline-offset: 2px
+    }
+
+    /* ---------- Feedback ---------- */
+    .fb {
+      margin: 14px 0 0 42px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      font-size: 14px
+    }
+
+    .fb .score {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px
+    }
+
+    .fb .heard {
+      color: var(--mute);
+      margin-bottom: 8px;
+      word-break: break-word
+    }
+
+    .fb .words span {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+      padding: 1px 8px;
+      border-radius: 7px
+    }
+
+    .fb .words .ok {
+      background: var(--okbg);
+      color: var(--ok)
+    }
+
+    .fb .words .miss {
+      background: var(--badbg);
+      color: var(--bad);
+      text-decoration: underline wavy;
+      text-underline-offset: 3px
+    }
+
+    .fb.good {
+      border-left: 4px solid var(--ok)
+    }
+
+    .fb.mid {
+      border-left: 4px solid var(--warm)
+    }
+
+    .fb.low {
+      border-left: 4px solid var(--bad)
+    }
+
+    /* ---------- Bottom dock ---------- */
+    .dock {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px))
+    }
+
+    .dock-in {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      gap: 8px
+    }
+
+    .dock button {
+      flex: 1;
+      min-height: 48px;
+      font-weight: 600
+    }
+
+    .dock #stop {
+      flex: 0 0 auto;
+      padding-inline: 16px
+    }
+
+    .dock #doneSpeak {
+      display: none;
+      background: var(--ok);
+      border-color: var(--ok);
+      color: var(--card)
+    }
+
+    .dock.listening #doneSpeak {
+      display: inline-flex
+    }
+
+    .dock.listening #playTopic,
+    .dock.listening #practice {
+      display: none
+    }
+
+    .lbl-short {
+      display: none
+    }
+
+    @media (max-width:520px) {
+      .lbl-long {
+        display: none
+      }
+
+      .lbl-short {
+        display: inline
+      }
+
+      .hero h1 {
+        font-size: 20px
+      }
+
+      .q h3 {
+        font-size: 17px
+      }
+
+      .a,
+      .actions,
+      .fb {
+        margin-left: 0
+      }
+
+      .actions button.primary {
+        flex: 1 1 100%
+      }
+
+      .actions button:not(.primary) {
+        flex: 1 1 calc(50% - 4px)
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important
+      }
+    }
