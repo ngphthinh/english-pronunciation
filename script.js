@@ -12,7 +12,7 @@ const T = [
       ],
       [
         "What have you been doing to prepare for your future job?",
-        "I have been learning programming languages, improving my English.",
+        "I have been learning programming languages and improving my English.",
       ],
       [
         "What do you do to get ready for a job interview?",
