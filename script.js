@@ -33,7 +33,7 @@ const T = [
       ],
       [
         "Do you prefer using a mobile phone or a laptop to study online?",
-        "I prefer using a laptop because it has a bigger screen and is easier to use.",
+        "I prefer using a mobile phone to study online. It is small, convenient, and easy to carry anywhere",
       ],
       [
         "Do you know any famous inventor?",
@@ -54,7 +54,7 @@ const T = [
       ],
       [
         "Have you ever had any problems on holiday?",
-        "Yes, I have. I once lost my phone during a trip.",
+        "Yes, I have. Once, I lost my way when I traveled to another city with my family. I felt worried, but I used Google Maps to find the way back. Luckily, everything was fine",
       ],
       [
         "Do you prefer travelling in a group or on your own?",
@@ -67,7 +67,7 @@ const T = [
     q: [
       [
         "What is the last thing you bought online?",
-        "I bought a T-shirt online last week. It was cheap and beautiful.",
+        "The last thing I bought online was a pair of headphones. I bought them on Shopee because I needed them for studying and listening to music",
       ],
       [
         "How important do you think logos are?",
@@ -79,7 +79,7 @@ const T = [
       ],
       [
         "What do you think makes one website better than another?",
-        "I think a good website should be easy to use, beautiful and fast.",
+        "I think a good website should be easy to use and have a simple design. It should also load quickly and provide useful information",
       ],
     ],
   },
@@ -399,7 +399,7 @@ function listen(t) {
       }
       clearTimeout(first);
       clearTimeout(silence);
-      silence = setTimeout(halt, 2500); /* im lặng 2,5s thì tự kết thúc */
+      silence = setTimeout(halt, 1500); /* im lặng 2,5s thì tự kết thúc */
       live();
     };
     r.onerror = (e) => {
