@@ -54,7 +54,7 @@ const T = [
       ],
       [
         "Have you ever had any problems on holiday?",
-        "Yes, I have. Once, I lost my way when I traveled to another city with my family. I felt worried, but I used Google Maps to find the way back. Luckily, everything was fine",
+        "Yes I have. Once I lost my way when I traveled to another city. I felt worried, but I used Google Map to find the way back ",
       ],
       [
         "Do you prefer travelling in a group or on your own?",
@@ -399,7 +399,7 @@ function listen(t) {
       }
       clearTimeout(first);
       clearTimeout(silence);
-      silence = setTimeout(halt, 1500); /* im lặng 2,5s thì tự kết thúc */
+      silence = setTimeout(halt, 2500); /* im lặng 2,5s thì tự kết thúc */
       live();
     };
     r.onerror = (e) => {
